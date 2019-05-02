@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RetailBankingApp</a> &gt; <a href="index.source.html" class="el_package">com.hcl.ing.retialbank.app.controller</a> &gt; <span class="el_source">AccountController.java</span></div><h1>AccountController.java</h1><pre class="source lang-java linenums">package com.hcl.ing.retialbank.app.controller;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hcl.ing.retialbank.app.dto.AccountSummaryResponse;
+import com.hcl.ing.retialbank.app.dto.AccountUpdateRequest;
+import com.hcl.ing.retialbank.app.dto.AccountUpdateResponse;
+import com.hcl.ing.retialbank.app.dto.SearchRequest;
+import com.hcl.ing.retialbank.app.dto.TransactionDto;
+import com.hcl.ing.retialbank.app.service.AccountServiceImpl;
+import com.hcl.ing.retialbank.app.service.ExcelGenerator;
+
+@RestController
+@RequestMapping(&quot;/account&quot;)
+<span class="nc" id="L28">public class AccountController {</span>
+	
+	@Autowired
+	private AccountServiceImpl accountServiceImpl;
+	
+	@PostMapping(&quot;/searchbyaccnoaccname&quot;)
+	public AccountSummaryResponse searchByAccountNoOrAccountName(@RequestBody SearchRequest request) {
+<span class="nc" id="L35">		return accountServiceImpl.searchByAccountNoOrAccountName(request);</span>
+	}
+	
+	@PostMapping(&quot;/updateaccount&quot;)
+	public AccountUpdateResponse updateAccountDetails(@RequestBody AccountUpdateRequest request) {
+<span class="nc" id="L40">		return accountServiceImpl.updateAccountDetails(request);</span>
+	}
+	
+	@GetMapping(&quot;/getrecenttrans&quot;)
+	public List&lt;TransactionDto&gt; getRecentTransaction(@RequestParam(&quot;accountNo&quot;) Long accountNo){
+<span class="nc" id="L45">		return accountServiceImpl.getRecentTransaction(accountNo);</span>
+	}
+	
+	@GetMapping(value = &quot;/download/transactions.xlsx&quot;)
+    public ResponseEntity&lt;InputStreamResource&gt; excelCustomersReport(@RequestParam(&quot;accountNo&quot;) Long accountNo) throws IOException {
+<span class="nc" id="L50">	        List&lt;TransactionDto&gt; customers = (List&lt;TransactionDto&gt;) accountServiceImpl.getRecentTransaction(accountNo);</span>
+	    
+<span class="nc" id="L52">	    ByteArrayInputStream in = ExcelGenerator.customersToExcel(customers);</span>
+	    
+<span class="nc" id="L54">	    HttpHeaders headers = new HttpHeaders();</span>
+<span class="nc" id="L55">	        headers.add(&quot;Content-Disposition&quot;, &quot;attachment; filename=customers.xlsx&quot;);</span>
+<span class="nc" id="L56">	     return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
