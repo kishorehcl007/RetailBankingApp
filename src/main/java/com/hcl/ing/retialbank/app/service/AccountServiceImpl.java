@@ -44,12 +44,12 @@ public class AccountServiceImpl implements AccountService {
 					dto.setDob(account.getDob());
 					dto.setCreateDt(account.getCreateDt());
 					dtoList.add(dto);
+					response.setSummaryList(dtoList);
 				});
 			}
 			
 			
 		} catch (Exception e) {
-			
 		}
 		return response;
 	}
