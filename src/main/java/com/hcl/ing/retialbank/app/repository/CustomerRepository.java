@@ -7,5 +7,5 @@ import com.hcl.ing.retialbank.app.entity.CustomerInfo;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerInfo, Long> {
-
+	public CustomerInfo findByUserName(String userName);
 }
