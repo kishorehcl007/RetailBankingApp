@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.hcl.ing.retialbank.app.RetailBankingAppApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 33.235 s - in com.hcl.ing.retialbank.app.RetailBankingAppApplicationTests

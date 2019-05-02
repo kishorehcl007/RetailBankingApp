@@ -11,9 +11,12 @@ import com.hcl.ing.retialbank.app.dto.AccountSummaryResponse;
 import com.hcl.ing.retialbank.app.dto.AccountUpdateRequest;
 import com.hcl.ing.retialbank.app.dto.AccountUpdateResponse;
 import com.hcl.ing.retialbank.app.dto.SearchRequest;
+import com.hcl.ing.retialbank.app.dto.TransactionDto;
 import com.hcl.ing.retialbank.app.entity.AccountSummary;
+import com.hcl.ing.retialbank.app.entity.Transaction;
 import com.hcl.ing.retialbank.app.repository.AccountSummaryRepository;
 import com.hcl.ing.retialbank.app.repository.CustomerRepository;
+import com.hcl.ing.retialbank.app.repository.TransactionRepository;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -23,6 +26,9 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private TransactionRepository transactionRepository;
 	
 
 	@Override
@@ -91,5 +97,31 @@ public class AccountServiceImpl implements AccountService {
 			
 		}
 		return summary;
+	}
+	
+	@Override
+	public List<TransactionDto> getRecentTransaction(Long accountNo) {
+		 List<TransactionDto> response=new ArrayList<>();
+		try {
+			List<Transaction> list = transactionRepository.findByFromAccountNumberOrderByTransactionDateDesc(accountNo);
+			if(!list.isEmpty()) {
+				list.stream().forEach(transaction ->{
+					TransactionDto dto=new TransactionDto();
+					dto.setAccountNumber(transaction.getAccountNumber());
+					dto.setClosingBalance(transaction.getClosingBalance());
+					dto.setFromAccountNumber(transaction.getFromAccountNumber());
+					dto.setTransactionAmount(transaction.getTransactionAmount());
+					dto.setTransactionDate(transaction.getTransactionDate());
+					dto.setTransactionId(transaction.getTransactionId());
+					dto.setTransactionRemarks(transaction.getTransactionRemarks());
+					dto.setTransactionType(transaction.getTransactionType());
+					response.add(dto);
+				});
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		return response;
 	}
 }

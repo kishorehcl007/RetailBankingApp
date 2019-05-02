@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountSummary.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">RetailBankingApp</a> &gt; <a href="index.source.html" class="el_package">com.hcl.ing.retialbank.app.entity</a> &gt; <span class="el_source">AccountSummary.java</span></div><h1>AccountSummary.java</h1><pre class="source lang-java linenums">package com.hcl.ing.retialbank.app.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name=&quot;account_summary&quot;)
+public class AccountSummary implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long accountNo;
+	
+	@Column(name=&quot;ACCOUNT_TYPE&quot;)
+	private String accountType;
+	
+	@Column(name=&quot;ACCOUNT_NAME&quot;)
+	private String accountName;
+	
+	@Column(name = &quot;DATE_OF_BIRTH&quot;)
+	private String dob;
+	
+	@Column(name=&quot;ADDRESS&quot;)
+	private String address;
+	
+	@Column(name=&quot;BRANCH_NAME&quot;)
+	private String branchName;
+	
+	@Column(name=&quot;CLOSING_BALANCE&quot;)
+	private Double closingBalance;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name=&quot;CREATE_DT&quot;,columnDefinition = &quot;DATETIME&quot;)
+	private Date createDt;
+	
+	public AccountSummary() {
+<span class="fc" id="L48">		super();</span>
+<span class="fc" id="L49">	}</span>
+
+	public Long getAccountNo() {
+<span class="fc" id="L52">		return accountNo;</span>
+	}
+
+	public void setAccountNo(Long accountNo) {
+<span class="fc" id="L56">		this.accountNo = accountNo;</span>
+<span class="fc" id="L57">	}</span>
+
+	public String getAccountType() {
+<span class="fc" id="L60">		return accountType;</span>
+	}
+
+	public void setAccountType(String accountType) {
+<span class="fc" id="L64">		this.accountType = accountType;</span>
+<span class="fc" id="L65">	}</span>
+
+	public String getAccountName() {
+<span class="fc" id="L68">		return accountName;</span>
+	}
+
+	public void setAccountName(String accountName) {
+<span class="fc" id="L72">		this.accountName = accountName;</span>
+<span class="fc" id="L73">	}</span>
+
+	public String getDob() {
+<span class="fc" id="L76">		return dob;</span>
+	}
+
+	public void setDob(String dob) {
+<span class="fc" id="L80">		this.dob = dob;</span>
+<span class="fc" id="L81">	}</span>
+
+	public String getAddress() {
+<span class="fc" id="L84">		return address;</span>
+	}
+
+	public void setAddress(String address) {
+<span class="fc" id="L88">		this.address = address;</span>
+<span class="fc" id="L89">	}</span>
+
+	public String getBranchName() {
+<span class="fc" id="L92">		return branchName;</span>
+	}
+
+	public void setBranchName(String branchName) {
+<span class="fc" id="L96">		this.branchName = branchName;</span>
+<span class="fc" id="L97">	}</span>
+
+	public Double getClosingBalance() {
+<span class="fc" id="L100">		return closingBalance;</span>
+	}
+
+	public void setClosingBalance(Double closingBalance) {
+<span class="fc" id="L104">		this.closingBalance = closingBalance;</span>
+<span class="fc" id="L105">	}</span>
+
+	public Date getCreateDt() {
+<span class="fc" id="L108">		return createDt;</span>
+	}
+
+	public void setCreateDt(Date createDt) {
+<span class="nc" id="L112">		this.createDt = createDt;</span>
+<span class="nc" id="L113">	}</span>
+
+	@Override
+	public String toString() {
+<span class="nc" id="L117">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L118">		builder.append(&quot;AccountSummary [accountNo=&quot;);</span>
+<span class="nc" id="L119">		builder.append(accountNo);</span>
+<span class="nc" id="L120">		builder.append(&quot;, accountType=&quot;);</span>
+<span class="nc" id="L121">		builder.append(accountType);</span>
+<span class="nc" id="L122">		builder.append(&quot;, accountName=&quot;);</span>
+<span class="nc" id="L123">		builder.append(accountName);</span>
+<span class="nc" id="L124">		builder.append(&quot;, dob=&quot;);</span>
+<span class="nc" id="L125">		builder.append(dob);</span>
+<span class="nc" id="L126">		builder.append(&quot;, address=&quot;);</span>
+<span class="nc" id="L127">		builder.append(address);</span>
+<span class="nc" id="L128">		builder.append(&quot;, branchName=&quot;);</span>
+<span class="nc" id="L129">		builder.append(branchName);</span>
+<span class="nc" id="L130">		builder.append(&quot;, closingBalance=&quot;);</span>
+<span class="nc" id="L131">		builder.append(closingBalance);</span>
+<span class="nc" id="L132">		builder.append(&quot;, createDt=&quot;);</span>
+<span class="nc" id="L133">		builder.append(createDt);</span>
+<span class="nc" id="L134">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L135">		return builder.toString();</span>
+	}
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
