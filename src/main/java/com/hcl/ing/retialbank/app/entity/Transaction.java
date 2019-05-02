@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="transaction")
 public class Transaction {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="transaction_id")
@@ -29,9 +30,9 @@ public class Transaction {
 	Long accountNumber;
 	@Column(name="transaction_amount")
 	Double transactionAmount;
-	@Column(name="transactionRemarks")
+	@Column(name="transaction_remarks")
 	String transactionRemarks;
-	@Column(name="closingBalance")
+	@Column(name="closing_balance")
 	Double closingBalance;
 	public Long getTransactionId() {
 		return transactionId;

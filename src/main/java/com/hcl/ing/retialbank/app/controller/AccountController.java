@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.ing.retialbank.app.dto.AccountResponse;
 import com.hcl.ing.retialbank.app.dto.AccountSummaryResponse;
 import com.hcl.ing.retialbank.app.dto.AccountUpdateRequest;
 import com.hcl.ing.retialbank.app.dto.AccountUpdateResponse;
+import com.hcl.ing.retialbank.app.dto.CustomerDTO;
 import com.hcl.ing.retialbank.app.dto.SearchRequest;
 import com.hcl.ing.retialbank.app.dto.TransactionDto;
+import com.hcl.ing.retialbank.app.dto.UserResponse;
 import com.hcl.ing.retialbank.app.service.AccountServiceImpl;
+import com.hcl.ing.retialbank.app.service.CustomerServiceImpl;
 import com.hcl.ing.retialbank.app.service.ExcelGenerator;
 
 @RestController
@@ -29,6 +33,9 @@ public class AccountController {
 	
 	@Autowired
 	private AccountServiceImpl accountServiceImpl;
+	
+	@Autowired
+	private CustomerServiceImpl customerService;
 	
 	@PostMapping("/searchbyaccnoaccname")
 	public AccountSummaryResponse searchByAccountNoOrAccountName(@RequestBody SearchRequest request) {
@@ -55,5 +62,26 @@ public class AccountController {
 	        headers.add("Content-Disposition", "attachment; filename=customers.xlsx");
 	     return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));
     }
+	
+	@PostMapping("/accont/create")
+	public UserResponse createAccout(@RequestBody CustomerDTO customerDto) {
+		
+		   UserResponse response=customerService.createAccount(customerDto);
+		         
+		
+		return response;
+			
+	}
+	
+	@GetMapping("/accountdetails")
+	public  AccountResponse accountDetails(@RequestParam String username) {
+		AccountResponse response=customerService.accountDetails(username);	
+		
+		return response;
+	}
 
 }
+
+	
+
+

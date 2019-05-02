@@ -60,7 +60,7 @@ public class CustomerLoginAppTest {
 		customerInfo.setPassword("priya");
 		customerInfo.setCustomerAccess('T');
 		
-		Mockito.when(customerRepository.findByUserName("Hari")).thenReturn(customerInfo);
+		Mockito.when(customerRepository.getUserInfo("Hari")).thenReturn(customerInfo);
 		Mockito.when(customerRepository.save(customerInfo)).thenReturn(customerInfo);
 		
 		CustomerResponse response = customerServiceImpl.changePassword("Hari", "priya",'T');

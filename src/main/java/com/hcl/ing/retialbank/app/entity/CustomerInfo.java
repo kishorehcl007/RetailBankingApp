@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="customer_info")
+@NamedQuery(name="CustomerInfo.getUserInfo" ,query="select ci from CustomerInfo ci where ci.userName=:userName")
 public class CustomerInfo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +36,16 @@ public class CustomerInfo implements Serializable {
 	@Column(name = "CUSTOMER_ACCESS")
 	private Character customerAccess;
 	
+	@Column(name="ACCNO")
+	private Long accno;
+	public Long getAccno() {
+		return accno;
+	}
+
+	public void setAccno(Long accno) {
+		this.accno = accno;
+	}
+
 	public CustomerInfo() {
 		super();
 	}

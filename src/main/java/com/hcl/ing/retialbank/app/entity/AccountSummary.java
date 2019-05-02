@@ -44,6 +44,17 @@ public class AccountSummary implements Serializable {
 	@Column(name="CREATE_DT",columnDefinition = "DATETIME")
 	private Date createDt;
 	
+	@Column(name="ROLE")
+	private String role;
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public AccountSummary() {
 		super();
 	}
