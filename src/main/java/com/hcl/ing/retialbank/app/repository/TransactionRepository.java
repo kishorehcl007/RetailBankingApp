@@ -11,6 +11,6 @@ import com.hcl.ing.retialbank.app.entity.Transaction;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long>{	
 	
-	public List<Transaction> findByFromAccountNumberOrderByTransactionDateDesc(Long fromAccountNumber);
+	public List<Transaction> findByAccountNumberOrderByTransactionDateDesc(Long fromAccountNumber);
 
 }

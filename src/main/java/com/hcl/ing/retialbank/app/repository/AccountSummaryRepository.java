@@ -12,5 +12,6 @@ public interface AccountSummaryRepository extends JpaRepository<AccountSummary, 
 	
 	public AccountSummary findByAccountNo(Long accountNo);
 	List<AccountSummary> findByAccountNoOrAccountName(Long accountNo,String accountName);
-	
+	public Double findByClosingBalance(Long accNo);
+
 }

@@ -34,6 +34,16 @@ public class CustomerInfo implements Serializable {
 	@Column(name = "CUSTOMER_ACCESS")
 	private Character customerAccess;
 	
+	@Column(name="ACCNO")
+	private Long accno;
+	public Long getAccno() {
+		return accno;
+	}
+
+	public void setAccno(Long accno) {
+		this.accno = accno;
+	}
+
 	public CustomerInfo() {
 		super();
 	}

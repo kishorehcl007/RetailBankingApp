@@ -103,7 +103,7 @@ public class AccountServiceImpl implements AccountService {
 	public List<TransactionDto> getRecentTransaction(Long accountNo) {
 		 List<TransactionDto> response=new ArrayList<>();
 		try {
-			List<Transaction> list = transactionRepository.findByFromAccountNumberOrderByTransactionDateDesc(accountNo);
+			List<Transaction> list = transactionRepository.findByAccountNumberOrderByTransactionDateDesc(accountNo);
 			if(!list.isEmpty()) {
 				list.stream().forEach(transaction ->{
 					TransactionDto dto=new TransactionDto();
