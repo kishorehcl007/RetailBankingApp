@@ -1,14 +1,12 @@
 package com.hcl.ing.retialbank.app.service;
 
 import org.junit.Assert;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.hcl.ing.retialbank.app.dto.AccountResponse;
 import com.hcl.ing.retialbank.app.dto.CustomerDTO;
 import com.hcl.ing.retialbank.app.dto.UserResponse;
 import com.hcl.ing.retialbank.app.entity.AccountSummary;
@@ -68,35 +66,32 @@ public class CreateAccountTests {
 	}
 	
 	
+	public void testAccountDetails() {
+		   
+	   /* AccountSummary account=new AccountSummary();
+	    account.setAccountNo(1234L);
+	    account.setClosingBalance(1234.0);
 	
+		Mockito.when(customerRepository.findByUserName("suma")).thenReturn(account);
+		
+		Mockito.when(accoutRespository.findByClosingBalance(1234L)).thenReturn(1234.0);;
+		
+		AccountResponse accresponse=customerService.accountDetails("suma");
+		
+	   Assert.assertEquals(account.getAccountNo(), accresponse.getAccNo());
+		
+	   Assert.assertEquals(account.getClosingBalance(), accresponse.getBalance());
+		
+	}*/
+
 	
+	}
 	
-//	@Test
-//	public void testAccountDetails() {
-//		   
-//	    AccountSummary account=new AccountSummary();
-//	    account.setAccountNo(1234L);
-//	    account.setBalance(1234.0);
-//	
-//		Mockito.when(customerRepository.findByUserName("suma")).thenReturn(1234L);
-//		
-//		Mockito.when(accoutRespository.findByClosingBalance(1234L)).thenReturn(1234.0);;
-//		
-//		AccountResponse accresponse=customerService.accountDetails("suma");
-//		
-//	   Assert.assertEquals(account.getAccountNo(), accresponse.getAccNo());
-//		
-//	   Assert.assertEquals(account.getClosingBalance(), accresponse.getBalance());
-//		
-//	}
-	
-	
-	
-	
+	}
 	
 	
 	
 	
 	
 
-}
+

@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name=&quot;transaction&quot;)
 <span class="fc" id="L16">public class Transaction {</span>
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name=&quot;transaction_id&quot;)
@@ -29,58 +30,58 @@ import javax.persistence.TemporalType;
 	Long accountNumber;
 	@Column(name=&quot;transaction_amount&quot;)
 	Double transactionAmount;
-	@Column(name=&quot;transactionRemarks&quot;)
+	@Column(name=&quot;transaction_remarks&quot;)
 	String transactionRemarks;
-	@Column(name=&quot;closingBalance&quot;)
+	@Column(name=&quot;closing_balance&quot;)
 	Double closingBalance;
 	public Long getTransactionId() {
-<span class="nc" id="L37">		return transactionId;</span>
+<span class="nc" id="L38">		return transactionId;</span>
 	}
 	public void setTransactionId(Long transactionId) {
-<span class="nc" id="L40">		this.transactionId = transactionId;</span>
-<span class="nc" id="L41">	}</span>
+<span class="nc" id="L41">		this.transactionId = transactionId;</span>
+<span class="nc" id="L42">	}</span>
 	public String getTransactionType() {
-<span class="nc" id="L43">		return transactionType;</span>
+<span class="nc" id="L44">		return transactionType;</span>
 	}
 	public void setTransactionType(String transactionType) {
-<span class="nc" id="L46">		this.transactionType = transactionType;</span>
-<span class="nc" id="L47">	}</span>
+<span class="nc" id="L47">		this.transactionType = transactionType;</span>
+<span class="nc" id="L48">	}</span>
 	public Date getTransactionDate() {
-<span class="nc" id="L49">		return transactionDate;</span>
+<span class="nc" id="L50">		return transactionDate;</span>
 	}
 	public void setTransactionDate(Date transactionDate) {
-<span class="nc" id="L52">		this.transactionDate = transactionDate;</span>
-<span class="nc" id="L53">	}</span>
+<span class="nc" id="L53">		this.transactionDate = transactionDate;</span>
+<span class="nc" id="L54">	}</span>
 	public Long getFromAccountNumber() {
-<span class="nc" id="L55">		return fromAccountNumber;</span>
+<span class="nc" id="L56">		return fromAccountNumber;</span>
 	}
 	public void setFromAccountNumber(Long fromAccountNumber) {
-<span class="nc" id="L58">		this.fromAccountNumber = fromAccountNumber;</span>
-<span class="nc" id="L59">	}</span>
+<span class="nc" id="L59">		this.fromAccountNumber = fromAccountNumber;</span>
+<span class="nc" id="L60">	}</span>
 	public Long getAccountNumber() {
-<span class="nc" id="L61">		return accountNumber;</span>
+<span class="nc" id="L62">		return accountNumber;</span>
 	}
 	public void setAccountNumber(Long accountNumber) {
-<span class="nc" id="L64">		this.accountNumber = accountNumber;</span>
-<span class="nc" id="L65">	}</span>
+<span class="nc" id="L65">		this.accountNumber = accountNumber;</span>
+<span class="nc" id="L66">	}</span>
 	public Double getTransactionAmount() {
-<span class="nc" id="L67">		return transactionAmount;</span>
+<span class="nc" id="L68">		return transactionAmount;</span>
 	}
 	public void setTransactionAmount(Double transactionAmount) {
-<span class="nc" id="L70">		this.transactionAmount = transactionAmount;</span>
-<span class="nc" id="L71">	}</span>
+<span class="nc" id="L71">		this.transactionAmount = transactionAmount;</span>
+<span class="nc" id="L72">	}</span>
 	public String getTransactionRemarks() {
-<span class="nc" id="L73">		return transactionRemarks;</span>
+<span class="nc" id="L74">		return transactionRemarks;</span>
 	}
 	public void setTransactionRemarks(String transactionRemarks) {
-<span class="nc" id="L76">		this.transactionRemarks = transactionRemarks;</span>
-<span class="nc" id="L77">	}</span>
+<span class="nc" id="L77">		this.transactionRemarks = transactionRemarks;</span>
+<span class="nc" id="L78">	}</span>
 	public Double getClosingBalance() {
-<span class="nc" id="L79">		return closingBalance;</span>
+<span class="nc" id="L80">		return closingBalance;</span>
 	}
 	public void setClosingBalance(Double closingBalance) {
-<span class="nc" id="L82">		this.closingBalance = closingBalance;</span>
-<span class="nc" id="L83">	}</span>
+<span class="nc" id="L83">		this.closingBalance = closingBalance;</span>
+<span class="nc" id="L84">	}</span>
 	
 	
 }

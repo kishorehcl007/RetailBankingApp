@@ -12,6 +12,6 @@ public interface CustomerRepository extends JpaRepository<CustomerInfo, Long> {
 	@Query
 	public CustomerInfo getUserInfo(String userName);
 
-	public Long  findByUserName(String userName);
+	public CustomerInfo  findByUserName(String userName);
 
 }

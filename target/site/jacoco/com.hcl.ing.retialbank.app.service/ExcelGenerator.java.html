@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.poi.sl.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -17,52 +16,52 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.hcl.ing.retialbank.app.dto.TransactionDto;
 
-<span class="nc" id="L20">public class ExcelGenerator {</span>
+<span class="nc" id="L19">public class ExcelGenerator {</span>
 	public static ByteArrayInputStream customersToExcel(List&lt;TransactionDto&gt; transasctions) throws IOException {
-<span class="nc" id="L22">	    String[] COLUMNs = {&quot;Transaction Id&quot;, &quot;From Account No&quot;, &quot;To account no&quot;, &quot;transaction type&quot;,&quot;closing balance&quot;};</span>
-<span class="nc" id="L23">	    try(</span>
-<span class="nc" id="L24">	        Workbook workbook = new XSSFWorkbook();</span>
-<span class="nc" id="L25">	        ByteArrayOutputStream out = new ByteArrayOutputStream();</span>
+<span class="nc" id="L21">	    String[] COLUMNs = {&quot;Transaction Id&quot;, &quot;From Account No&quot;, &quot;To account no&quot;, &quot;transaction type&quot;,&quot;closing balance&quot;};</span>
+<span class="nc" id="L22">	    try(</span>
+<span class="nc" id="L23">	        Workbook workbook = new XSSFWorkbook();</span>
+<span class="nc" id="L24">	        ByteArrayOutputStream out = new ByteArrayOutputStream();</span>
 	    ){
-<span class="nc" id="L27">	      CreationHelper createHelper = workbook.getCreationHelper();</span>
+<span class="nc" id="L26">	      CreationHelper createHelper = workbook.getCreationHelper();</span>
 	   
-<span class="nc" id="L29">	      Sheet sheet = (Sheet) workbook.createSheet(&quot;transactions&quot;);</span>
+<span class="nc" id="L28">	      org.apache.poi.ss.usermodel.Sheet sheet =  workbook.createSheet(&quot;transactions&quot;);</span>
 	   
-<span class="nc" id="L31">	      Font headerFont = workbook.createFont();</span>
-<span class="nc" id="L32">	      headerFont.setBold(true);</span>
-<span class="nc" id="L33">	      headerFont.setColor(IndexedColors.BLUE.getIndex());</span>
+<span class="nc" id="L30">	      Font headerFont = workbook.createFont();</span>
+<span class="nc" id="L31">	      headerFont.setBold(true);</span>
+<span class="nc" id="L32">	      headerFont.setColor(IndexedColors.BLUE.getIndex());</span>
 	   
-<span class="nc" id="L35">	      CellStyle headerCellStyle = workbook.createCellStyle();</span>
-<span class="nc" id="L36">	      headerCellStyle.setFont(headerFont);</span>
+<span class="nc" id="L34">	      CellStyle headerCellStyle = workbook.createCellStyle();</span>
+<span class="nc" id="L35">	      headerCellStyle.setFont(headerFont);</span>
 	   
 	      // Row for Header
-<span class="nc" id="L39">	      Row headerRow = ((org.apache.poi.ss.usermodel.Sheet) sheet).createRow(0);</span>
+<span class="nc" id="L38">	      Row headerRow = ((org.apache.poi.ss.usermodel.Sheet) sheet).createRow(0);</span>
 	   
 	      // Header
-<span class="nc bnc" id="L42" title="All 2 branches missed.">	      for (int col = 0; col &lt; COLUMNs.length; col++) {</span>
-<span class="nc" id="L43">	        Cell cell = headerRow.createCell(col);</span>
-<span class="nc" id="L44">	        cell.setCellValue(COLUMNs[col]);</span>
-<span class="nc" id="L45">	        cell.setCellStyle(headerCellStyle);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">	      for (int col = 0; col &lt; COLUMNs.length; col++) {</span>
+<span class="nc" id="L42">	        Cell cell = headerRow.createCell(col);</span>
+<span class="nc" id="L43">	        cell.setCellValue(COLUMNs[col]);</span>
+<span class="nc" id="L44">	        cell.setCellStyle(headerCellStyle);</span>
 	      }
 	   
 	      // CellStyle for Age
-<span class="nc" id="L49">	      CellStyle ageCellStyle = workbook.createCellStyle();</span>
-<span class="nc" id="L50">	      ageCellStyle.setDataFormat(createHelper.createDataFormat().getFormat(&quot;#&quot;));</span>
+<span class="nc" id="L48">	      CellStyle ageCellStyle = workbook.createCellStyle();</span>
+<span class="nc" id="L49">	      ageCellStyle.setDataFormat(createHelper.createDataFormat().getFormat(&quot;#&quot;));</span>
 	   
-<span class="nc" id="L52">	      int rowIdx = 1;</span>
-<span class="nc bnc" id="L53" title="All 2 branches missed.">	      for (TransactionDto trans : transasctions) {</span>
-<span class="nc" id="L54">	        Row row = ((org.apache.poi.ss.usermodel.Sheet) sheet).createRow(rowIdx++);</span>
+<span class="nc" id="L51">	      int rowIdx = 1;</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">	      for (TransactionDto trans : transasctions) {</span>
+<span class="nc" id="L53">	        Row row = ((org.apache.poi.ss.usermodel.Sheet) sheet).createRow(rowIdx++);</span>
 	   
-<span class="nc" id="L56">	        row.createCell(0).setCellValue(trans.getTransactionId());</span>
-<span class="nc" id="L57">	        row.createCell(1).setCellValue(trans.getFromAccountNumber());</span>
-<span class="nc" id="L58">	        row.createCell(2).setCellValue(trans.getAccountNumber());</span>
-<span class="nc" id="L59">	        row.createCell(3).setCellValue(trans.getTransactionType());</span>
-<span class="nc" id="L60">	        row.createCell(4).setCellValue(trans.getClosingBalance());</span>
+<span class="nc" id="L55">	        row.createCell(0).setCellValue(trans.getTransactionId());</span>
+<span class="nc" id="L56">	        row.createCell(1).setCellValue(trans.getFromAccountNumber());</span>
+<span class="nc" id="L57">	        row.createCell(2).setCellValue(trans.getAccountNumber());</span>
+<span class="nc" id="L58">	        row.createCell(3).setCellValue(trans.getTransactionType());</span>
+<span class="nc" id="L59">	        row.createCell(4).setCellValue(trans.getClosingBalance());</span>
 	   
-<span class="nc" id="L62">	      }</span>
+<span class="nc" id="L61">	      }</span>
 	   
-<span class="nc" id="L64">	      workbook.write(out);</span>
-<span class="nc" id="L65">	      return new ByteArrayInputStream(out.toByteArray());</span>
+<span class="nc" id="L63">	      workbook.write(out);</span>
+<span class="nc" id="L64">	      return new ByteArrayInputStream(out.toByteArray());</span>
 	    }
 	  }
 }

@@ -15,46 +15,74 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.ing.retialbank.app.dto.AccountResponse;
 import com.hcl.ing.retialbank.app.dto.AccountSummaryResponse;
 import com.hcl.ing.retialbank.app.dto.AccountUpdateRequest;
 import com.hcl.ing.retialbank.app.dto.AccountUpdateResponse;
+import com.hcl.ing.retialbank.app.dto.CustomerDTO;
 import com.hcl.ing.retialbank.app.dto.SearchRequest;
 import com.hcl.ing.retialbank.app.dto.TransactionDto;
+import com.hcl.ing.retialbank.app.dto.UserResponse;
 import com.hcl.ing.retialbank.app.service.AccountServiceImpl;
+import com.hcl.ing.retialbank.app.service.CustomerServiceImpl;
 import com.hcl.ing.retialbank.app.service.ExcelGenerator;
 
 @RestController
 @RequestMapping(&quot;/account&quot;)
-<span class="nc" id="L28">public class AccountController {</span>
+<span class="fc" id="L32">public class AccountController {</span>
 	
 	@Autowired
 	private AccountServiceImpl accountServiceImpl;
 	
+	@Autowired
+	private CustomerServiceImpl customerService;
+	
 	@PostMapping(&quot;/searchbyaccnoaccname&quot;)
 	public AccountSummaryResponse searchByAccountNoOrAccountName(@RequestBody SearchRequest request) {
-<span class="nc" id="L35">		return accountServiceImpl.searchByAccountNoOrAccountName(request);</span>
+<span class="nc" id="L42">		return accountServiceImpl.searchByAccountNoOrAccountName(request);</span>
 	}
 	
 	@PostMapping(&quot;/updateaccount&quot;)
 	public AccountUpdateResponse updateAccountDetails(@RequestBody AccountUpdateRequest request) {
-<span class="nc" id="L40">		return accountServiceImpl.updateAccountDetails(request);</span>
+<span class="nc" id="L47">		return accountServiceImpl.updateAccountDetails(request);</span>
 	}
 	
 	@GetMapping(&quot;/getrecenttrans&quot;)
 	public List&lt;TransactionDto&gt; getRecentTransaction(@RequestParam(&quot;accountNo&quot;) Long accountNo){
-<span class="nc" id="L45">		return accountServiceImpl.getRecentTransaction(accountNo);</span>
+<span class="nc" id="L52">		return accountServiceImpl.getRecentTransaction(accountNo);</span>
 	}
 	
 	@GetMapping(value = &quot;/download/transactions.xlsx&quot;)
     public ResponseEntity&lt;InputStreamResource&gt; excelCustomersReport(@RequestParam(&quot;accountNo&quot;) Long accountNo) throws IOException {
-<span class="nc" id="L50">	        List&lt;TransactionDto&gt; customers = (List&lt;TransactionDto&gt;) accountServiceImpl.getRecentTransaction(accountNo);</span>
+<span class="nc" id="L57">	        List&lt;TransactionDto&gt; customers = (List&lt;TransactionDto&gt;) accountServiceImpl.getRecentTransaction(accountNo);</span>
 	    
-<span class="nc" id="L52">	    ByteArrayInputStream in = ExcelGenerator.customersToExcel(customers);</span>
+<span class="nc" id="L59">	    ByteArrayInputStream in = ExcelGenerator.customersToExcel(customers);</span>
 	    
-<span class="nc" id="L54">	    HttpHeaders headers = new HttpHeaders();</span>
-<span class="nc" id="L55">	        headers.add(&quot;Content-Disposition&quot;, &quot;attachment; filename=customers.xlsx&quot;);</span>
-<span class="nc" id="L56">	     return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));</span>
+<span class="nc" id="L61">	    HttpHeaders headers = new HttpHeaders();</span>
+<span class="nc" id="L62">	        headers.add(&quot;Content-Disposition&quot;, &quot;attachment; filename=customers.xlsx&quot;);</span>
+<span class="nc" id="L63">	     return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));</span>
     }
+	
+	@PostMapping(&quot;/accont/create&quot;)
+	public UserResponse createAccout(@RequestBody CustomerDTO customerDto) {
+		
+<span class="nc" id="L69">		   UserResponse response=customerService.createAccount(customerDto);</span>
+		         
+		
+<span class="nc" id="L72">		return response;</span>
+			
+	}
+	
+	@GetMapping(&quot;/accountdetails&quot;)
+	public  AccountResponse accountDetails(@RequestParam String username) {
+<span class="nc" id="L78">		AccountResponse response=customerService.accountDetails(username);	</span>
+		
+<span class="nc" id="L80">		return response;</span>
+	}
 
 }
+
+	
+
+
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

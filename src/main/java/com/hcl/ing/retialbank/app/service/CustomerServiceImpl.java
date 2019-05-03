@@ -120,10 +120,12 @@ public class CustomerServiceImpl implements CustomerService {
 	public AccountResponse accountDetails(String userName) {
 		
 		  AccountResponse response=new AccountResponse();
-		   Long accno=customerRepository.findByUserName(userName);
-		   response.setAccNo(accno);	   
-		  AccountSummary accountSummary= accoutRespository.findByClosingBalance(accno);
-		  response.setBalance(accountSummary.getClosingBalance());   
+
+		   CustomerInfo accno=customerRepository.findByUserName(userName);
+		   response.setAccNo(accno.getAccno());	   
+		  AccountSummary value= accoutRespository.findByAccountNo(accno.getAccno());
+		  response.setBalance(value.getClosingBalance());   
+
 		
 		 return response ;
 	

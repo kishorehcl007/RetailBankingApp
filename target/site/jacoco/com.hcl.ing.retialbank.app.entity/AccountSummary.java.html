@@ -44,95 +44,106 @@ public class AccountSummary implements Serializable {
 	@Column(name=&quot;CREATE_DT&quot;,columnDefinition = &quot;DATETIME&quot;)
 	private Date createDt;
 	
+	@Column(name=&quot;ROLE&quot;)
+	private String role;
+	
+	public String getRole() {
+<span class="nc" id="L51">		return role;</span>
+	}
+
+	public void setRole(String role) {
+<span class="nc" id="L55">		this.role = role;</span>
+<span class="nc" id="L56">	}</span>
+
 	public AccountSummary() {
-<span class="fc" id="L48">		super();</span>
-<span class="fc" id="L49">	}</span>
+<span class="fc" id="L59">		super();</span>
+<span class="fc" id="L60">	}</span>
 
 	public Long getAccountNo() {
-<span class="fc" id="L52">		return accountNo;</span>
+<span class="fc" id="L63">		return accountNo;</span>
 	}
 
 	public void setAccountNo(Long accountNo) {
-<span class="fc" id="L56">		this.accountNo = accountNo;</span>
-<span class="fc" id="L57">	}</span>
+<span class="fc" id="L67">		this.accountNo = accountNo;</span>
+<span class="fc" id="L68">	}</span>
 
 	public String getAccountType() {
-<span class="fc" id="L60">		return accountType;</span>
+<span class="fc" id="L71">		return accountType;</span>
 	}
 
 	public void setAccountType(String accountType) {
-<span class="fc" id="L64">		this.accountType = accountType;</span>
-<span class="fc" id="L65">	}</span>
+<span class="fc" id="L75">		this.accountType = accountType;</span>
+<span class="fc" id="L76">	}</span>
 
 	public String getAccountName() {
-<span class="fc" id="L68">		return accountName;</span>
+<span class="fc" id="L79">		return accountName;</span>
 	}
 
 	public void setAccountName(String accountName) {
-<span class="fc" id="L72">		this.accountName = accountName;</span>
-<span class="fc" id="L73">	}</span>
+<span class="fc" id="L83">		this.accountName = accountName;</span>
+<span class="fc" id="L84">	}</span>
 
 	public String getDob() {
-<span class="fc" id="L76">		return dob;</span>
+<span class="fc" id="L87">		return dob;</span>
 	}
 
 	public void setDob(String dob) {
-<span class="fc" id="L80">		this.dob = dob;</span>
-<span class="fc" id="L81">	}</span>
+<span class="fc" id="L91">		this.dob = dob;</span>
+<span class="fc" id="L92">	}</span>
 
 	public String getAddress() {
-<span class="fc" id="L84">		return address;</span>
+<span class="fc" id="L95">		return address;</span>
 	}
 
 	public void setAddress(String address) {
-<span class="fc" id="L88">		this.address = address;</span>
-<span class="fc" id="L89">	}</span>
+<span class="fc" id="L99">		this.address = address;</span>
+<span class="fc" id="L100">	}</span>
 
 	public String getBranchName() {
-<span class="fc" id="L92">		return branchName;</span>
+<span class="fc" id="L103">		return branchName;</span>
 	}
 
 	public void setBranchName(String branchName) {
-<span class="fc" id="L96">		this.branchName = branchName;</span>
-<span class="fc" id="L97">	}</span>
+<span class="fc" id="L107">		this.branchName = branchName;</span>
+<span class="fc" id="L108">	}</span>
 
 	public Double getClosingBalance() {
-<span class="fc" id="L100">		return closingBalance;</span>
+<span class="fc" id="L111">		return closingBalance;</span>
 	}
 
 	public void setClosingBalance(Double closingBalance) {
-<span class="fc" id="L104">		this.closingBalance = closingBalance;</span>
-<span class="fc" id="L105">	}</span>
+<span class="fc" id="L115">		this.closingBalance = closingBalance;</span>
+<span class="fc" id="L116">	}</span>
 
 	public Date getCreateDt() {
-<span class="fc" id="L108">		return createDt;</span>
+<span class="fc" id="L119">		return createDt;</span>
 	}
 
 	public void setCreateDt(Date createDt) {
-<span class="nc" id="L112">		this.createDt = createDt;</span>
-<span class="nc" id="L113">	}</span>
+<span class="nc" id="L123">		this.createDt = createDt;</span>
+<span class="nc" id="L124">	}</span>
 
 	@Override
 	public String toString() {
-<span class="nc" id="L117">		StringBuilder builder = new StringBuilder();</span>
-<span class="nc" id="L118">		builder.append(&quot;AccountSummary [accountNo=&quot;);</span>
-<span class="nc" id="L119">		builder.append(accountNo);</span>
-<span class="nc" id="L120">		builder.append(&quot;, accountType=&quot;);</span>
-<span class="nc" id="L121">		builder.append(accountType);</span>
-<span class="nc" id="L122">		builder.append(&quot;, accountName=&quot;);</span>
-<span class="nc" id="L123">		builder.append(accountName);</span>
-<span class="nc" id="L124">		builder.append(&quot;, dob=&quot;);</span>
-<span class="nc" id="L125">		builder.append(dob);</span>
-<span class="nc" id="L126">		builder.append(&quot;, address=&quot;);</span>
-<span class="nc" id="L127">		builder.append(address);</span>
-<span class="nc" id="L128">		builder.append(&quot;, branchName=&quot;);</span>
-<span class="nc" id="L129">		builder.append(branchName);</span>
-<span class="nc" id="L130">		builder.append(&quot;, closingBalance=&quot;);</span>
-<span class="nc" id="L131">		builder.append(closingBalance);</span>
-<span class="nc" id="L132">		builder.append(&quot;, createDt=&quot;);</span>
-<span class="nc" id="L133">		builder.append(createDt);</span>
-<span class="nc" id="L134">		builder.append(&quot;]&quot;);</span>
-<span class="nc" id="L135">		return builder.toString();</span>
+<span class="nc" id="L128">		StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L129">		builder.append(&quot;AccountSummary [accountNo=&quot;);</span>
+<span class="nc" id="L130">		builder.append(accountNo);</span>
+<span class="nc" id="L131">		builder.append(&quot;, accountType=&quot;);</span>
+<span class="nc" id="L132">		builder.append(accountType);</span>
+<span class="nc" id="L133">		builder.append(&quot;, accountName=&quot;);</span>
+<span class="nc" id="L134">		builder.append(accountName);</span>
+<span class="nc" id="L135">		builder.append(&quot;, dob=&quot;);</span>
+<span class="nc" id="L136">		builder.append(dob);</span>
+<span class="nc" id="L137">		builder.append(&quot;, address=&quot;);</span>
+<span class="nc" id="L138">		builder.append(address);</span>
+<span class="nc" id="L139">		builder.append(&quot;, branchName=&quot;);</span>
+<span class="nc" id="L140">		builder.append(branchName);</span>
+<span class="nc" id="L141">		builder.append(&quot;, closingBalance=&quot;);</span>
+<span class="nc" id="L142">		builder.append(closingBalance);</span>
+<span class="nc" id="L143">		builder.append(&quot;, createDt=&quot;);</span>
+<span class="nc" id="L144">		builder.append(createDt);</span>
+<span class="nc" id="L145">		builder.append(&quot;]&quot;);</span>
+<span class="nc" id="L146">		return builder.toString();</span>
 	}
 	
 	
