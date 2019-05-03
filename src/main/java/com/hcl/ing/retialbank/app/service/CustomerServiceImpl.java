@@ -90,7 +90,10 @@ public class CustomerServiceImpl implements CustomerService {
 		 
 		 AccountSummary accountDetails= accoutRespository.save(createAcct);
 		 
-		   transaction.setAccountNumber(accountDetails.getAccountNo());
+		   if(accountDetails!=null) {
+		   transaction.setAccountNumber(accountDetails.getAccountNo());			 
+		   }
+		   
 		   transaction.setClosingBalance(customerDto.getClosingBalance());
 		   transaction.setTransactionAmount(customerDto.getClosingBalance());
 		   transaction.setTransactionDate(new Date());
@@ -98,9 +101,10 @@ public class CustomerServiceImpl implements CustomerService {
 		   transaction.setTransactionType("Crerdit");
 		   transationRepository.save(transaction);
 		 
-		 
-          customer.setAccno(accountDetails.getAccountNo());
-		  customer.setCustomerAccess('F');
+		   
+		  if(accountDetails!=null)
+		  customer.setAccno(accountDetails.getAccountNo());
+          customer.setCustomerAccess('F');
 		  customer.setCustomerName(customerDto.getAccountName());
 		  customer.setCustomerType(customerDto.getRole());
 		  customer.setUserName(customerDto.getAccountName().concat("sder"));
