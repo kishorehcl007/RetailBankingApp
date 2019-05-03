@@ -2,8 +2,8 @@ package com.hcl.ing.retialbank.app.dto;
 
 public class UserResponse {
 	
-	public String userName;
-	public String password;
+	private String userName;
+	private String password;
 	
 	public String getUserName() {
 		return userName;
