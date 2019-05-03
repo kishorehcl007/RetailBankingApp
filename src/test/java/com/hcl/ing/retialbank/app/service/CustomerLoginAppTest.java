@@ -63,7 +63,7 @@ public class CustomerLoginAppTest {
 		Mockito.when(customerRepository.getUserInfo("Hari")).thenReturn(customerInfo);
 		Mockito.when(customerRepository.save(customerInfo)).thenReturn(customerInfo);
 		
-		CustomerResponse response = customerServiceImpl.changePassword("Hari", "priya",'T');
+		CustomerResponse response = customerServiceImpl.changePassword("Hari", "priya");
 		assertEquals("Password changed successfully", response.getResponse());
 		
 		

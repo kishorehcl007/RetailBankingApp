@@ -18,7 +18,7 @@ import com.hcl.ing.retialbank.app.dto.TransactionDto;
 
 public class ExcelGenerator {
 	public static ByteArrayInputStream customersToExcel(List<TransactionDto> transasctions) throws IOException {
-	    String[] COLUMNs = {"Transaction Id", "From Account No", "To account no", "transaction type","closing balance"};
+	    String[] COLUMNs = {"Transaction Id", "To account no", "transaction type","closing balance"};
 	    try(
 	        Workbook workbook = new XSSFWorkbook();
 	        ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -53,7 +53,7 @@ public class ExcelGenerator {
 	        Row row = ((org.apache.poi.ss.usermodel.Sheet) sheet).createRow(rowIdx++);
 	   
 	        row.createCell(0).setCellValue(trans.getTransactionId());
-	        row.createCell(1).setCellValue(trans.getFromAccountNumber());
+	        //row.createCell(1).setCellValue("dsa");
 	        row.createCell(2).setCellValue(trans.getAccountNumber());
 	        row.createCell(3).setCellValue(trans.getTransactionType());
 	        row.createCell(4).setCellValue(trans.getClosingBalance());

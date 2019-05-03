@@ -3,7 +3,7 @@ package com.hcl.ing.retialbank.app.dto;
 public class CustomerDTO {
 	
 
-		private Long accountNo;
+		
 		private String accountType;
 		private String accountName;
 		private String dob;
@@ -12,13 +12,6 @@ public class CustomerDTO {
 		private Double closingBalance;
 		private String role;
 
-		public Long getAccountNo() {
-			return accountNo;
-		}
-
-		public void setAccountNo(Long accountNo) {
-			this.accountNo = accountNo;
-		}
 
 		public String getAccountType() {
 			return accountType;

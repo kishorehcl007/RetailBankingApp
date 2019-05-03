@@ -9,7 +9,7 @@ public interface CustomerService {
 
 	public CustomerResponse loginUser(String username,String password);
 	
-	public CustomerResponse changePassword(String customerId,String password,Character customerAccess);
+	public CustomerResponse changePassword(String customerId,String password);
 
 	public UserResponse createAccount(CustomerDTO customerDto);
 	

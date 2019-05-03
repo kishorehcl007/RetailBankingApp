@@ -51,13 +51,13 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public CustomerResponse changePassword(String userName, String password, Character customerAccess) {
+	public CustomerResponse changePassword(String userName, String password) {
 		CustomerResponse response = null;
 		try {
 			response = new CustomerResponse();
 			CustomerInfo cutomerInfo = customerRepository.getUserInfo(userName);
 			cutomerInfo.setPassword(password);
-			cutomerInfo.setCustomerAccess(customerAccess);
+			cutomerInfo.setCustomerAccess('T');
 			CustomerInfo petresponse = customerRepository.save(cutomerInfo);
 			if (petresponse != null) {
 				response.setResponse("Password changed successfully");

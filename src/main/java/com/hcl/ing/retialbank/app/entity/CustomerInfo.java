@@ -38,6 +38,7 @@ public class CustomerInfo implements Serializable {
 	
 	@Column(name="ACCNO")
 	private Long accno;
+	
 	public Long getAccno() {
 		return accno;
 	}

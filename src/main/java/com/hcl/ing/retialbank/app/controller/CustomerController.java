@@ -26,9 +26,9 @@ public class CustomerController {
 	
 	
 	@PostMapping("/changePassword")
-	public ResponseEntity<String> changePassword(@RequestParam String userName,@RequestParam String password,@RequestParam Character customerAcess)
+	public ResponseEntity<String> changePassword(@RequestParam String userName,@RequestParam String password)
 	{
-		CustomerResponse customerResponse=customerService.changePassword(userName, password, customerAcess);
+		CustomerResponse customerResponse=customerService.changePassword(userName, password);
 		return new ResponseEntity<String>(customerResponse.getResponse(),HttpStatus.CREATED);
 		
 	}
