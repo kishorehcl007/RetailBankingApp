@@ -28,7 +28,7 @@ public class TransactionServiceImpl implements TransactionService {
 		Transaction transaction = new Transaction();
 		transaction.setAccountNumber(transactionPojo.getAccountNumber());
 		transaction.setTransactionType(transactionPojo.getTransactionType());
-		transaction.setFromAccountNumber(transaction.getFromAccountNumber());
+		transaction.setFromAccountNumber(transactionPojo.getFromAccountNumber());
 		transaction.setTransactionAmount(transactionPojo.getTransactionAmount());
 		transaction.setTransactionRemarks(transactionPojo.getTransactionRemarks());
 		transaction.setTransactionDate(new Date());
